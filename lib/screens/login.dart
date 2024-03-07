@@ -8,18 +8,43 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff2B475E),
       body: Column(
-        mainAxisSize: MainAxisSize.max,
+        // mainAxisSize: MainAxisSize.max,
         children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: Image.asset('assets/images/scholar.png'),
-            ),
+          Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: Image.asset('assets/images/scholar.png'),
           ),
           Text(
             'Scholar Chat',
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+                // fontWeight: FontWeight.bold,
+                fontSize: 24,
+                color: Colors.white,
+                fontFamily: 'pacifico'),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Text(
+              'LOGIN',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Email',
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black)),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+              ),
+            ),
           ),
         ],
       ),
