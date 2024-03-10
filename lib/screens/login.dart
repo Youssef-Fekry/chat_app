@@ -7,46 +7,53 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff2B475E),
-      body: Column(
-        // mainAxisSize: MainAxisSize.max,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 50),
-            child: Image.asset('assets/images/scholar.png'),
-          ),
-          Text(
-            'Scholar Chat',
-            style: TextStyle(
-                // fontWeight: FontWeight.bold,
-                fontSize: 24,
-                color: Colors.white,
-                fontFamily: 'pacifico'),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Text(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Column(
+          // mainAxisSize: MainAxisSize.max,
+          children: [
+            Image.asset('assets/images/scholar.png'),
+            Text(
+              'Scholar Chat',
+              style: TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Colors.white,
+                  fontFamily: 'pacifico'),
+            ),
+            Text(
               'LOGIN',
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Email',
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black)),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white)),
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white)),
-              ),
+            CustomTextFieald(
+              hint: 'Email',
             ),
-          ),
-        ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomTextFieald extends StatelessWidget {
+  const CustomTextFieald({
+    super.key,
+    required this.hint,
+  });
+  final String? hint;
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: hint,
+        focusedBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+        enabledBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
       ),
     );
   }
