@@ -1,6 +1,6 @@
 import 'package:chat_app_with_api/Widget/custom_button.dart';
 import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
-import 'package:chat_app_with_api/screens/signup.dart';
+import 'package:chat_app_with_api/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
