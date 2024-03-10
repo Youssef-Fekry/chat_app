@@ -12,10 +12,10 @@ class CustomTextFieald extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hint,
         focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-        enabledBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+        enabledBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
       ),
     );
   }

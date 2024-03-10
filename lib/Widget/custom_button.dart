@@ -9,9 +9,10 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(16)),
+            color: Colors.white, borderRadius: BorderRadius.circular(8)),
         width: double.infinity,
         height: 45,
         child: Center(child: Text(label)),
