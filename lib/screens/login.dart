@@ -1,3 +1,4 @@
+import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -33,27 +34,6 @@ class LoginPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CustomTextFieald extends StatelessWidget {
-  const CustomTextFieald({
-    super.key,
-    required this.hint,
-  });
-  final String? hint;
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: hint,
-        focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-        enabledBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
       ),
     );
   }
