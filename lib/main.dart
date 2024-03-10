@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:chat_app_with_api/screens/login_screen.dart';
+import 'package:chat_app_with_api/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,10 +15,12 @@ class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        'LoginPage': (context) => LoginPage(),
+        'SignUp':(context) => SignUp(),
+      },
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: LoginPage(),
-      ),
+      initialRoute: 'LoginPage',
     );
   }
 }

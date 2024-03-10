@@ -1,6 +1,5 @@
 import 'package:chat_app_with_api/Widget/custom_button.dart';
 import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
-import 'package:chat_app_with_api/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -32,7 +31,7 @@ class LoginPage extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'LOGIN',
+                  'Sign in',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -56,7 +55,7 @@ class LoginPage extends StatelessWidget {
               height: 25,
             ),
             CustomButton(
-              label: 'Login',
+              label: 'Sign in',
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -67,10 +66,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
-                        return SignUp();
-                      }));
+                      Navigator.pushNamed(context, 'SignUp');
                     },
                     child: Text('click here',
                         style: TextStyle(color: Colors.blue))),
