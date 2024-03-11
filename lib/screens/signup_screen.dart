@@ -1,7 +1,7 @@
 import 'package:chat_app_with_api/Widget/custom_button.dart';
 import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
 import 'package:flutter/material.dart';
-
+  const 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
 
