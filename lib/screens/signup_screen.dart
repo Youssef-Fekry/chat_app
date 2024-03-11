@@ -1,14 +1,15 @@
 import 'package:chat_app_with_api/Widget/custom_button.dart';
 import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
+import 'package:chat_app_with_api/constans.dart';
 import 'package:flutter/material.dart';
-  const 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
 
+class SignUp extends StatelessWidget {
+   SignUp({super.key});
+  static String id = 'SignUp';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2B475E),
+      backgroundColor: kPrimaryColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
