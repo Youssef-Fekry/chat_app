@@ -69,15 +69,18 @@ class SignUp extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child:
-                        Text('Sign in', style: TextStyle(color: Colors.blue))),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Sign in',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ),
               ],
             ),
             Spacer(
-              flex: 3,
+              flex: 2,
             ),
           ],
         ),
