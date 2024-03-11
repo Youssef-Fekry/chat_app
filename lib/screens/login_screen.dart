@@ -88,3 +88,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+//echo 'export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.1.0/bin:$PATH"' >> ~/.zshrc
+//gem install bundler
+// brew link --overwrite python@3.12 --dry-run
+//brew link --overwrite python@3.12
