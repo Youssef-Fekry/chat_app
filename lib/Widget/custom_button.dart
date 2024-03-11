@@ -1,15 +1,16 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-    required this.label,
-  });
+  CustomButton({super.key, required this.label, required this.onTap});
+  VoidCallback? onTap;
   final String label;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(8)),

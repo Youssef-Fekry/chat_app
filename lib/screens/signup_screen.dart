@@ -1,11 +1,14 @@
 import 'package:chat_app_with_api/Widget/custom_button.dart';
 import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
 import 'package:chat_app_with_api/constans.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({super.key});
   static String id = 'SignUp';
+  String? email;
+  String? password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,24 +48,36 @@ class SignUp extends StatelessWidget {
               height: 10,
             ),
             CustomTextFieald(
+              onchange: (data) {
+                email = data;
+              },
               hint: 'Email',
             ),
             SizedBox(
               height: 5,
             ),
             CustomTextFieald(
+              onchange: (data) {
+                password = data;
+              },
               hint: 'Password',
             ),
             SizedBox(
               height: 5,
             ),
-            CustomTextFieald(
-              hint: 'Confirm Password',
-            ),
+            // CustomTextFieald(
+            //   hint: 'Confirm Password',
+            // ),
             SizedBox(
               height: 25,
             ),
             CustomButton(
+              onTap: () async {
+                final auth = FirebaseAuth.instance;
+                UserCredential user = await auth.createUserWithEmailAndPassword(
+                    email: email!, password: password!);
+                print(user.user!.displayName);
+              },
               label: 'Create Account',
             ),
             Row(

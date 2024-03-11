@@ -5,8 +5,9 @@ import 'package:chat_app_with_api/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
+  LoginPage({super.key});
+  String? email;
+  String? Password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,18 +50,25 @@ class LoginPage extends StatelessWidget {
                 height: 10,
               ),
               CustomTextFieald(
+                onchange: (data) {
+                  email = data;
+                },
                 hint: 'Email',
               ),
               SizedBox(
                 height: 5,
               ),
               CustomTextFieald(
+                onchange: (data) {
+                  Password = data;
+                },
                 hint: 'Password',
               ),
               SizedBox(
                 height: 25,
               ),
               CustomButton(
+                onTap: () {},
                 label: 'Sign in',
               ),
               Row(
@@ -88,7 +96,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-//echo 'export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.1.0/bin:$PATH"' >> ~/.zshrc
-//gem install bundler
-// brew link --overwrite python@3.12 --dry-run
-//brew link --overwrite python@3.12
