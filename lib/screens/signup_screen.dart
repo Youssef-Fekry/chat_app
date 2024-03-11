@@ -4,7 +4,7 @@ import 'package:chat_app_with_api/constans.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatelessWidget {
-   SignUp({super.key});
+  SignUp({super.key});
   static String id = 'SignUp';
   @override
   Widget build(BuildContext context) {
@@ -12,20 +12,23 @@ class SignUp extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Column(
+        child: ListView(
           children: [
-            Spacer(
-              flex: 1,
+            SizedBox(
+              height: 30,
             ),
-            Image.asset('assets/images/scholar.png'),
+            Image.asset(
+              'assets/images/scholar.png',
+              height: 100,
+            ),
             Text(
               'Scholar Chat',
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 24, color: Colors.white, fontFamily: 'pacifico'),
             ),
-            Spacer(
-              flex: 1,
+            SizedBox(
+              height: 30,
             ),
             Row(
               children: [
@@ -80,8 +83,8 @@ class SignUp extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(
-              flex: 2,
+            SizedBox(
+              height: 30,
             ),
           ],
         ),

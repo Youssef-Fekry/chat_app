@@ -14,22 +14,25 @@ class LoginPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: OrientationBuilder(builder: (context, orientation) {
-          return Column(
+          return ListView(
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             // mainAxisSize: MainAxisSize.max,
             children: [
-              Spacer(
-                flex: 1,
+              SizedBox(
+                height: 30,
               ),
-              Image.asset('assets/images/scholar.png'),
+              Image.asset(
+                'assets/images/scholar.png',
+                height: 100,
+              ),
               Text(
                 'Scholar Chat',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 24, color: Colors.white, fontFamily: 'pacifico'),
               ),
-              Spacer(
-                flex: 1,
+              SizedBox(
+                height: 30,
               ),
               Row(
                 children: [
@@ -75,8 +78,8 @@ class LoginPage extends StatelessWidget {
                           style: TextStyle(color: Colors.blue))),
                 ],
               ),
-              Spacer(
-                flex: 3,
+              SizedBox(
+                height: 30,
               ),
             ],
           );
