@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class CustomTextFieald extends StatelessWidget {
@@ -6,8 +8,14 @@ class CustomTextFieald extends StatelessWidget {
   final String? hint;
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      onChanged:onchange ,
+    return TextFormField(
+      //use to validate
+      validator: (data) {
+        if (data!.isEmpty) {
+          return 'Field Is Required';
+        }
+      },
+      onChanged: onchange,
       decoration: InputDecoration(
         hintText: hint,
         focusedBorder:

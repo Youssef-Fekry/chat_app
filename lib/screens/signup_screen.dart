@@ -3,107 +3,162 @@ import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
 import 'package:chat_app_with_api/constans.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   SignUp({super.key});
   static String id = 'SignUp';
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
   String? email;
+
   String? password;
+
+  bool isLoading = false;
+
+  GlobalKey<FormState> formkey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPrimaryColor,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: ListView(
-          children: [
-            SizedBox(
-              height: 30,
-            ),
-            Image.asset(
-              'assets/images/scholar.png',
-              height: 100,
-            ),
-            Text(
-              'Scholar Chat',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 24, color: Colors.white, fontFamily: 'pacifico'),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
+    return ModalProgressHUD(
+      inAsyncCall: isLoading,
+      child: Scaffold(
+        backgroundColor: kPrimaryColor,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Form(
+            key: formkey,
+            child: ListView(
               children: [
+                SizedBox(
+                  height: 30,
+                ),
+                Image.asset(
+                  'assets/images/scholar.png',
+                  height: 100,
+                ),
                 Text(
-                  'Sign Up',
+                  'Scholar Chat',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
+                      fontSize: 24,
+                      color: Colors.white,
+                      fontFamily: 'pacifico'),
                 ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomTextFieald(
-              onchange: (data) {
-                email = data;
-              },
-              hint: 'Email',
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            CustomTextFieald(
-              onchange: (data) {
-                password = data;
-              },
-              hint: 'Password',
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            // CustomTextFieald(
-            //   hint: 'Confirm Password',
-            // ),
-            SizedBox(
-              height: 25,
-            ),
-            CustomButton(
-              onTap: () async {
-                final auth = FirebaseAuth.instance;
-                UserCredential user = await auth.createUserWithEmailAndPassword(
-                    email: email!, password: password!);
-                print(user.user!.displayName);
-              },
-              label: 'Create Account',
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already have an account? ',
-                  style: TextStyle(color: Colors.white),
+                SizedBox(
+                  height: 30,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
+                Row(
+                  children: [
+                    Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                CustomTextFieald(
+                  onchange: (data) {
+                    email = data;
                   },
-                  child: Text(
-                    'Sign in',
-                    style: TextStyle(color: Colors.blue),
-                  ),
+                  hint: 'Email',
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                CustomTextFieald(
+                  onchange: (data) {
+                    password = data;
+                  },
+                  hint: 'Password',
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                // CustomTextFieald(
+                //   hint: 'Confirm Password',
+                // ),
+                SizedBox(
+                  height: 25,
+                ),
+                CustomButton(
+                  onTap: () async {
+                    if (formkey.currentState!.validate()) {
+                      isLoading = true;
+                      setState(() {});
+                      try {
+                        await Authontication_User();
+                        ShowsnakBarMessage(
+                            context, 'Account Created Successfully');
+                      } on FirebaseAuthException catch (ex) {
+                        if (ex.code == 'weak-password') {
+                          ShowsnakBarMessage(context,
+                              'The password provided is too weak Email already exists');
+                        } else if (ex.code == 'email-already-in-use') {
+                          ShowsnakBarMessage(context, 'Email already exists');
+                        }
+                      } catch (ex) {
+                        ShowsnakBarMessage(
+                            context, 'An unexpected error occured');
+                      }
+                      isLoading = false;
+                      setState(() {});
+                    } else {}
+                  },
+                  label: 'Create Account',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already have an account? ',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'Sign in',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 30,
                 ),
               ],
             ),
-            SizedBox(
-              height: 30,
-            ),
-          ],
+          ),
         ),
       ),
     );
+  }
+
+  void ShowsnakBarMessage(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.transparent,
+        content: Text(
+          message,
+        ),
+      ),
+    );
+  }
+
+  Future<void> Authontication_User() async {
+    final auth = FirebaseAuth.instance;
+    UserCredential user = await auth.createUserWithEmailAndPassword(
+        email: email!, password: password!);
   }
 }
