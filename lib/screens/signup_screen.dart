@@ -1,6 +1,7 @@
 import 'package:chat_app_with_api/Widget/custom_button.dart';
 import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
 import 'package:chat_app_with_api/constans.dart';
+import 'package:chat_app_with_api/helper/show_snakBar_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -147,16 +148,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  void ShowsnakBarMessage(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.transparent,
-        content: Text(
-          message,
-        ),
-      ),
-    );
-  }
+
 
   Future<void> Authontication_User() async {
     final auth = FirebaseAuth.instance;
