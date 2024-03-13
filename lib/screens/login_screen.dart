@@ -4,10 +4,20 @@ import 'package:chat_app_with_api/constans.dart';
 import 'package:chat_app_with_api/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   String? email;
+
   String? Password;
+
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +34,7 @@ class LoginPage extends StatelessWidget {
               ),
               Image.asset(
                 'assets/images/scholar.png',
+                // 'assets/images/result.png',
                 height: 100,
               ),
               Text(

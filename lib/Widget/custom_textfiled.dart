@@ -9,6 +9,9 @@ class CustomTextFieald extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextStyle(
+        color: Colors.white,
+      ),
       //use to validate
       validator: (data) {
         if (data!.isEmpty) {
@@ -19,10 +22,11 @@ class CustomTextFieald extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hint,
         focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
         enabledBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.blueGrey)),
+        border:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.blueGrey)),
       ),
     );
   }

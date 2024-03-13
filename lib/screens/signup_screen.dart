@@ -39,10 +39,12 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Image.asset(
                   'assets/images/scholar.png',
+                  // 'assets/images/result.png',
                   height: 100,
                 ),
                 Text(
                   'Scholar Chat',
+                  // 'AboSafen Scout',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 24,
