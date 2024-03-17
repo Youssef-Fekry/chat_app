@@ -7,7 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -16,7 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String? email;
 
-  String? Password;
+  String? password;
 
   bool isLoading = false;
   GlobalKey<FormState> formkey = GlobalKey();
@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               CustomTextFieald(
                 onchange: (data) {
-                  Password = data;
+                  password = data;
                 },
                 hint: 'Password',
               ),
@@ -132,11 +132,9 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-
-
   Future<void> Authontication_User() async {
     final auth = FirebaseAuth.instance;
     UserCredential user = await auth.signInWithEmailAndPassword(
-        email: email!, password: Password!);
+        email: email!, password: password!);
   }
 }
