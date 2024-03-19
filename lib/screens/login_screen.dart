@@ -2,13 +2,14 @@ import 'package:chat_app_with_api/Widget/custom_button.dart';
 import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
 import 'package:chat_app_with_api/constans.dart';
 import 'package:chat_app_with_api/helper/show_snakBar_message.dart';
+import 'package:chat_app_with_api/screens/chat_page.dart';
 import 'package:chat_app_with_api/screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  static String id = 'LoginPage';
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -93,26 +94,23 @@ class _LoginPageState extends State<LoginPage> {
                         isLoading = true;
                         setState(() {});
                         try {
-                          await Authontication_User();
-                          ShowsnakBarMessage(context, 'Login Successfully');
+                          await LoginUser();
+                          Navigator.pushNamed(context, ChatPage.id);
                         } on FirebaseAuthException catch (ex) {
                           if (ex.code == 'user-not-found') {
-                            ShowsnakBarMessage(
-                                context, 'No user found for that email.');
+                            print('No user found for that email.');
                           } else if (ex.code == 'wrong-password') {
-                            ShowsnakBarMessage(context,
-                                'Wrong password provided for that user');
+                            print('Wrong password provided for that user.');
                           }
                         } catch (ex) {
                           ShowsnakBarMessage(
                               context, 'An unexpected error occured');
-                          print(ex);
                         }
                         isLoading = false;
                         setState(() {});
                       } else {}
                     },
-                    label: 'Sign in',
+                    label: 'Sign In',
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -139,9 +137,8 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<void> Authontication_User() async {
-    final auth = FirebaseAuth.instance;
-    UserCredential user = await auth.signInWithEmailAndPassword(
-        email: email!, password: password!);
+  Future<void> LoginUser() async {
+    UserCredential user = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email!, password: password!);
   }
 }
