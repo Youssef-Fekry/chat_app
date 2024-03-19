@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-class CustomTextFieald extends StatelessWidget {
-  CustomTextFieald({super.key, required this.hint, required this.onchange});
+class CustomTextFormFieald extends StatelessWidget {
+  CustomTextFormFieald({super.key, required this.hint, required this.onchange});
   Function(String)? onchange;
   final String? hint;
   @override

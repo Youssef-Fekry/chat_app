@@ -69,7 +69,7 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 10,
                 ),
-                CustomTextFieald(
+                CustomTextFormFieald(
                   onchange: (data) {
                     email = data;
                   },
@@ -78,7 +78,7 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 5,
                 ),
-                CustomTextFieald(
+                CustomTextFormFieald(
                   onchange: (data) {
                     password = data;
                   },
@@ -147,8 +147,6 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
-
-
 
   Future<void> Authontication_User() async {
     final auth = FirebaseAuth.instance;
