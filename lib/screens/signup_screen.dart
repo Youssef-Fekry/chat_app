@@ -40,7 +40,7 @@ class _SignUpState extends State<SignUp> {
                   height: 30,
                 ),
                 Image.asset(
-                  'assets/images/scholar.png',
+                  kLogo,
                   // 'assets/images/result.png',
                   height: 100,
                 ),
