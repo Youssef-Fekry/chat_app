@@ -11,10 +11,8 @@ class ChatBubles extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
-        height: 65,
-        width: 150,
-        padding: EdgeInsets.only(left: 16),
-        margin: EdgeInsets.all(16),
+        padding: EdgeInsets.only(left: 16, bottom: 16, right: 16, top: 16),
+        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
             color: kPrimaryColor,
             borderRadius: BorderRadius.only(
@@ -25,7 +23,7 @@ class ChatBubles extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Text(
-            'new message afssss',
+            'new message',
             style: TextStyle(color: Colors.white),
           ),
         ),
