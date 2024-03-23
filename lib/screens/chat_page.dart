@@ -1,9 +1,13 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:chat_app_with_api/Widget/chat_buble.dart';
 import 'package:chat_app_with_api/constans.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
   static String id = 'ChatPage';
+
+  const ChatPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
