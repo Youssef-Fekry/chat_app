@@ -38,6 +38,26 @@ class ChatPage extends StatelessWidget {
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Send Message',
+                suffixIcon: Icon(
+                  Icons.send,
+                  color: kPrimaryColor,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: kPrimaryColor),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: kPrimaryColor),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
