@@ -43,6 +43,10 @@ class ChatPage extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Send Message',
+                // suffix: Icon(
+                //   Icons.emoji_emotions,
+                //   color: kPrimaryColor,
+                // ),
                 suffixIcon: Icon(
                   Icons.send,
                   color: kPrimaryColor,
