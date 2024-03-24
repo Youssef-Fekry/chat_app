@@ -5,3 +5,4 @@ const kPrimaryColor = Color(0xff2B475E);
 const kLogo = 'assets/images/scholar.png';
 // const kLogo = 'assets/images/result.png';
 const kMessagesCollection = 'messages';
+const KMessage = 'message';
