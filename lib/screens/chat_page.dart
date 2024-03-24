@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:chat_app_with_api/Widget/chat_buble.dart';
 import 'package:chat_app_with_api/constans.dart';
