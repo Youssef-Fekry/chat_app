@@ -71,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 10,
                   ),
                   CustomTextFormFieald(
+                    obsecuretext: false,
                     onchange: (data) {
                       email = data;
                     },
@@ -80,6 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 5,
                   ),
                   CustomTextFormFieald(
+                    obsecuretext: true,
                     onchange: (data) {
                       password = data;
                     },
@@ -95,7 +97,8 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {});
                         try {
                           await LoginUser();
-                          Navigator.pushNamed(context, ChatPage.id);
+                          Navigator.pushNamed(context, ChatPage.id,
+                              arguments: email);
                         } on FirebaseAuthException catch (ex) {
                           if (ex.code == 'user-not-found') {
                             print('No user found for that email.');

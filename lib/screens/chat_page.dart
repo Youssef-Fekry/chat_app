@@ -3,25 +3,29 @@ import 'package:chat_app_with_api/constans.dart';
 import 'package:chat_app_with_api/models/message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ChatPage extends StatelessWidget {
   static String id = 'ChatPage';
   TextEditingController controller = TextEditingController();
+  final _controller = ScrollController();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   CollectionReference messages =
       FirebaseFirestore.instance.collection(kMessagesCollection);
   ChatPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<QuerySnapshot>(
-      future: messages.get(),
+    var email = ModalRoute.of(context)!.settings.arguments;
+    return StreamBuilder<QuerySnapshot>(
+      stream: messages.orderBy(kCreatedAt, descending: true).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Message> messagesList = [];
+          List<MessageModel> messagesList = [];
           for (int i = 0; i < snapshot.data!.docs.length; i++) {
-            messagesList.add(Message.fromJason(snapshot.data!.docs[i]));
+            messagesList.add(
+              MessageModel.fromDocumentSnapshot(snapshot.data!.docs[i]),
+            );
           }
-          print(snapshot.data!.docs[0]['message']);
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
@@ -45,8 +49,15 @@ class ChatPage extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.builder(
+                    reverse: true,
+                    controller: _controller,
+                    itemCount: messagesList.length,
                     itemBuilder: (context, index) {
-                      return ChatBubles();
+                      return messagesList[index].id == email
+                          ? ChatBubles(
+                              message: messagesList[index],
+                            )
+                          : ChatBublesForaFriend(message: messagesList[index]);
                     },
                   ),
                 ),
@@ -57,17 +68,18 @@ class ChatPage extends StatelessWidget {
                     onSubmitted: (data) {
                       messages.add(
                         {
-                          'message': data,
+                          KMessage: data,
+                          kCreatedAt: DateTime.now(),
+                          kID: email,
                         },
                       );
                       controller.clear();
+                      _controller.animateTo(0,
+                          duration: Duration(microseconds: 500),
+                          curve: Curves.easeInOut);
                     },
                     decoration: InputDecoration(
                       hintText: 'Send Message',
-                      // suffix: Icon(
-                      //   Icons.emoji_emotions,
-                      //   color: kPrimaryColor,
-                      // ),
                       suffixIcon: Icon(
                         Icons.send,
                         color: kPrimaryColor,

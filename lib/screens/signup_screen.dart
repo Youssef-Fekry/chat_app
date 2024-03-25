@@ -71,6 +71,7 @@ class _SignUpState extends State<SignUp> {
                   height: 10,
                 ),
                 CustomTextFormFieald(
+                  obsecuretext: false,
                   onchange: (data) {
                     email = data;
                   },
@@ -80,6 +81,7 @@ class _SignUpState extends State<SignUp> {
                   height: 5,
                 ),
                 CustomTextFormFieald(
+                  obsecuretext: true,
                   onchange: (data) {
                     password = data;
                   },
