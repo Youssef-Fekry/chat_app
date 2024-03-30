@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:chat_app_with_api/screens/chat_page.dart';
+import 'package:chat_app_with_api/screens/chat_screen.dart';
 import 'package:chat_app_with_api/screens/login_screen.dart';
 import 'package:chat_app_with_api/screens/signup_screen.dart';
 import 'package:flutter/material.dart';

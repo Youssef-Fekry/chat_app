@@ -2,7 +2,7 @@ import 'package:chat_app_with_api/Widget/custom_button.dart';
 import 'package:chat_app_with_api/Widget/custom_textfiled.dart';
 import 'package:chat_app_with_api/constans.dart';
 import 'package:chat_app_with_api/helper/show_snakBar_message.dart';
-import 'package:chat_app_with_api/screens/chat_page.dart';
+import 'package:chat_app_with_api/screens/chat_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
